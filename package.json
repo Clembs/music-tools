@@ -1,10 +1,20 @@
 {
   "name": "music-tools",
   "type": "module",
+  "scripts": {
+    "spotitags": "bun ./scripts/spotify-id3-tags.ts",
+    "spotitags:inst": "bun ./scripts/spotify-id3-tags.ts --instrumental"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@paperdave/logger": "^3.0.1",
+    "@spotify/web-api-ts-sdk": "^1.2.0",
+    "enquirer": "^2.4.1",
+    "node-id3": "^0.2.6"
   }
 }
