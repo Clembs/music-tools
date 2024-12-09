@@ -3,6 +3,7 @@ import { readdirSync } from "node:fs";
 import { SpotifyApi, type Track } from "@spotify/web-api-ts-sdk";
 import Enquirer from "enquirer";
 import { Logger, Spinner } from "@paperdave/logger";
+import { parseArgs } from "util";
 const { prompt } = Enquirer;
 
 if (!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_CLIENT_SECRET) {
@@ -17,9 +18,28 @@ if (!process.env.THUMBNAILS_DIR) {
 
 const bannedCharacters = /[\\/:*?"<>|]/g;
 
-const musicDirectory = process.argv[2];
+const args = parseArgs({
+  args: Bun.argv,
+  allowPositionals: true,
+  strict: true,
+  options: {
+    instrumental: {
+      type: "boolean",
+      description: "Append ' - Instrumental' to the title",
+      default: false,
+    },
+  },
+});
+
+const musicDirectory = args.positionals[2];
 const musicThumbnailsDirectory = process.env.THUMBNAILS_DIR;
-const instrumentalMode = process.argv.includes("--instrumental");
+const instrumentalMode = args.values.instrumental;
+
+if (!musicDirectory) {
+  throw new Error(
+    "Missing music directory argument. Usage: bun spotitags <music-directory>"
+  );
+}
 
 const spotifyClient = SpotifyApi.withClientCredentials(
   process.env.SPOTIFY_CLIENT_ID,
