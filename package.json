@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "spotitags": "bun ./scripts/spotify-id3-tags.ts",
-    "spotitags:inst": "bun ./scripts/spotify-id3-tags.ts --instrumental"
+    "spotitags:inst": "bun ./scripts/spotify-id3-tags.ts --instrumental",
+    "clear-tags": "bun ./scripts/clear-tags.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"

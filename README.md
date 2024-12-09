@@ -20,3 +20,11 @@ required environment variables:
 - `SPOTIFY_CLIENT_ID`: the spotify client id.
 - `SPOTIFY_CLIENT_SECRET`: the spotify client secret.
 - `THUMBNAILS_DIR`: the directory where the album art thumbnails will be saved.
+
+### clear-tags
+
+clears id3 tags from a given file. useful if you're dumb-dumb and accidentally tagged a file that shouldn't be tagged and no tool can remove the tags because ???
+
+`bun clear-tags.ts <file>`
+
+- `file`: the file to clear the tags from.
