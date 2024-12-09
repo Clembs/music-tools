@@ -168,7 +168,7 @@ for (const file of files) {
 
     updateID3(
       {
-        title: track.name + instrumentalMode ? " - Instrumental" : "",
+        title: track.name + (instrumentalMode ? " - Instrumental" : ""),
         artist: track.artists.map((artist) => artist.name).join(", "),
         album: track.album.name,
         trackNumber: track.track_number.toString(),
@@ -178,7 +178,7 @@ for (const file of files) {
       `${musicDirectory}/${file}`
     );
 
-    Logger.success(`Tagged ${file}`);
+    Logger.success(`Tagged ${track.name}`);
   } else {
     Logger.info(`Skipped already tagged file: ${file}`);
   }
