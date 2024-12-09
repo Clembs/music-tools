@@ -12,7 +12,7 @@ for each track found in a directory that's not fully tagged, query the spotify A
 
 `bun spotify-id3-tags.ts <music_dir> (--instrumental)`
 
-- `music_dir`: the directory containing the music files (searches for mp3, flac, m4a, wav and aif files).
+- `music_dir`: the directory containing the music files (searches for mp3 files only).
 - `--instrumental`: if present, adds ` - Instrumental` to each track's title.
 
 required environment variables:

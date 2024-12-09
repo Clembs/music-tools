@@ -50,7 +50,7 @@ let skipped = await Bun.file("skipped.txt").text();
 
 // read the directory
 const files = readdirSync(musicDirectory).filter(
-  (file) => /\.(mp3|flac|m4a|aif|wav)$/.test(file) && !skipped.includes(file)
+  (file) => file.endsWith(".mp3") && !skipped.includes(file)
 );
 
 for (const file of files) {
